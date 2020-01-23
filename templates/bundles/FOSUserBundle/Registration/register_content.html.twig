@@ -1,0 +1,18 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="container-fluid row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4"><br>
+        <h2 style="text-align: center">Créer un compte</h2><br>
+        {% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+        {{ form_widget(form) }}
+        <div style="text-align: center">
+            <input type="submit" class="btn btn-primary btn-block" value="{{ 'registration.submit'|trans }}" />
+        </div>
+        {{ form_end(form) }}
+        <br><br>
+    </div>
+    <div class="col-md-4"></div>
+</div>

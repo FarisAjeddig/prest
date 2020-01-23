@@ -20,7 +20,7 @@ class BlogController extends AbstractController
     {
         $articles = $this->getDoctrine()->getRepository(Article::class)->findBy(['isPublished' => true]);
         return $this->render('blog/index.html.twig', [
-            'articles' => $articles,
+            'articles' => array_reverse($articles),
         ]);
     }
 
@@ -157,6 +157,16 @@ class BlogController extends AbstractController
             'article' => $article,
             'comments' => $article->getComments(),
             'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/admin", name="admin")
+     */
+    public function adminAction(Request $request){
+        $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
+        return $this->render('blog/admin.html.twig', [
+            'articles' => array_reverse($articles),
         ]);
     }
 }

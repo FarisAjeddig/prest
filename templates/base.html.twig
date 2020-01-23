@@ -36,8 +36,8 @@
                             </div>
                             <div class="col-md topper d-flex align-items-center justify-content-end">
                                 <p class="mb-0 d-block">
-                                    <a href="#" class="btn py-2 px-3 btn-primary">
-                                        <span>Contactez-nous</span>
+                                    <a href={%  if app.user is not null and is_granted('ROLE_ADMIN') %}"{{ url('blog_admin') }}" {% else %} "#" {% endif %} class="btn py-2 px-3 btn-primary">
+                                        <span>{%  if app.user is not null and is_granted('ROLE_ADMIN') %} Administration {% else %} Contactez-nous {% endif %}</span>
                                     </a>
                                 </p>
                             </div>
@@ -64,10 +64,10 @@
 
                 <div class="collapse navbar-collapse" id="ftco-nav">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a href="{{ url('homepage') }}" class="nav-link pl-0">Home</a></li>
-                        <li class="nav-item"><a href="{{ url('homepage') }}" class="nav-link">About</a></li>
-                        <li class="nav-item"><a href="{{ url('homepage') }}" class="nav-link">Projects</a></li>
-                        <li class="nav-item"><a href="{{ url('homepage') }}" class="nav-link">Services</a></li>
+                        <li class="nav-item"><a href="{{ url('homepage') }}" class="nav-link pl-0">Accueil</a></li>
+                        <li class="nav-item"><a href="{{ url('homepage') }}" class="nav-link">Équipe</a></li>
+                        <li class="nav-item"><a href="{{ url('homepage') }}" class="nav-link">Tarifs</a></li>
+                        <li class="nav-item"><a href="{{ url('homepage') }}" class="nav-link">Références</a></li>
                         <li class="nav-item"><a href="{{ url('blog_homepage') }}" class="nav-link">Blog</a></li>
                         <li class="nav-item"><a href="{{ url('contact') }}" class="nav-link">Contact</a></li>
                     </ul>

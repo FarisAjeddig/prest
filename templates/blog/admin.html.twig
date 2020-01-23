@@ -1,0 +1,41 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Blog admin!{% endblock %}
+
+{% block body %}
+    <br><h1 style="text-align: center">Gestion des articles du bloc</h1><br>
+    <div style="text-align: center">
+        <a  href="{{ url('blog_add') }}" class="btn btn-primary">Écrire un article</a>
+    </div><br><br>
+    <div class="container-fluid row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <table class="table">
+{#                <caption>List of users</caption>#}
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Date de création</th>
+                    <th scope="col">Nombre de commentaires</th>
+                    <th scope="col">Publié / Brouillon</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for article in articles %}
+                    <tr>
+                        <th scope="row">{{article.id}}</th>
+                        <td>{{ article.title }}</td>
+                        <td>{{ article.creationDate|date('d/m/Y') }}</td>
+                        <td>{{ article.comments|length }}</td>
+                        <td>{% if article.isPublished %} Publié {% else %} Brouillon {% endif %}</td>
+                        <td><a class="text-success" href="{{ url('blog_edit', {id: article.id}) }}">Modifier</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+{% endblock %}

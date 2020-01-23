@@ -1,0 +1,39 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+{% block body %}
+    <br><h1 style="text-align: center">Gestion des témoignages clients</h1><br>
+    <div style="text-align: center">
+        <a  href="{{ url('admin_customer_reviews_add') }}" class="btn btn-primary">Ajouter un nouveau témoignage</a>
+    </div><br><br>
+    <div class="container-fluid row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom & prénom</th>
+                    <th scope="col">Poste et entreprise</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Contenu</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for review in reviews %}
+                    <tr>
+                        <th scope="row">{{review.id}}</th>
+                        <td>{{ review.name }}</td>
+                        <td>{{ review.title }}</td>
+                        <td>{{ review.date|date("d/m/y") }}</td>
+                        <td>{{ review.content }}</td>
+                        <td><a class="text-success" href="{{ url('admin_customer_reviews_edit', {id: review.id}) }}">Modifier</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+{% endblock %}

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\CustomerReview;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -20,9 +21,11 @@ class DefaultController extends AbstractController
     public function index()
     {
         $articles = $this->getDoctrine()->getRepository(Article::class)->findThreeLast();
+        $customerReviews = $this->getDoctrine()->getRepository(CustomerReview::class)->findThreeLast();
 
         return $this->render('default/index.html.twig', [
             'articles' => $articles,
+            'reviews' => $customerReviews
         ]);
     }
 
