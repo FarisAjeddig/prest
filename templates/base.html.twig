@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900&display=swap" rel="stylesheet">
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+
+    <body>
+    {% block header %}
+        <!-- First header  -->
+        <div class="bg-top navbar-light">
+            <div class="container">
+                <div class="row no-gutters d-flex align-items-center align-items-stretch">
+                    <div class="col-lg-4 d-flex align-items-center py-4">
+                        <a class="navbar-brand" href="index.html">Prest</a>
+                    </div>
+                    <div class="col-lg-8 d-block">
+                        <div class="row d-flex">
+                            <div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
+                                <div class="icon d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+                                <div class="text">
+                                    <span>Email</span>
+                                    <span><a href="mailto:fajeddig@hotmail.fr">fajeddig@hotmail.fr</a></span>
+                                </div>
+                            </div>
+                            <div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
+                                <div class="icon d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+                                <div class="text">
+                                    <span>Tel</span>
+                                    <span><a href="tel:+33658080190">+336 58 08 01 90</a></span>
+                                </div>
+                            </div>
+                            <div class="col-md topper d-flex align-items-center justify-content-end">
+                                <p class="mb-0 d-block">
+                                    <a href="#" class="btn py-2 px-3 btn-primary">
+                                        <span>Contactez-nous</span>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Real header  -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
+            <div class="container d-flex align-items-center">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="oi oi-menu"></span> Menu
+                </button>
+
+                <!-- <form action="#" class="searchform order-lg-last">
+                <div class="form-group d-flex">
+                  <input type="text" class="form-control pl-3" placeholder="Search">
+                  <button type="submit" placeholder="" class="form-control search"><span class="ion-ios-search"></span></button>
+                </div>
+              </form> -->
+
+                <div class="collapse navbar-collapse" id="ftco-nav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a href="{{ url('homepage') }}" class="nav-link pl-0">Home</a></li>
+                        <li class="nav-item"><a href="{{ url('homepage') }}" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="{{ url('homepage') }}" class="nav-link">Projects</a></li>
+                        <li class="nav-item"><a href="{{ url('homepage') }}" class="nav-link">Services</a></li>
+                        <li class="nav-item"><a href="{{ url('blog_homepage') }}" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="{{ url('contact') }}" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- END nav -->
+    {% endblock %}
+
+    {% for type, messages in app.session.flashbag.all() %}
+        <div class="row container-fluid">
+            <div class="offset-5 col-2">
+                {% for message in messages %}
+                    <div class="alert alert-{{type}}">
+                        {{message}}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+
+    {% block body %}{% endblock %}
+    {% block javascripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-migrate-3.1.0.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
+{#        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>#}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+
+    {% block footer %}
+        <footer class="ftco-footer ftco-bg-dark ftco-section">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="ftco-footer-widget mb-5">
+                            <h2 class="ftco-heading-2">Vous avez une question ?</h2>
+                            <div class="block-23 mb-3">
+                                <ul>
+                                    <li><span class="icon icon-map-marker"></span><span class="text">9 Rue Charles Fourier, 91000 Évry</span></li>
+                                    <li><a href="tel:+33658080190"><span class="icon icon-phone"></span><span class="text">+336 58 08 01 90</span></a></li>
+                                    <li><a href="mailto:fajeddig@hotmail.fr"><span class="icon icon-envelope"></span><span class="text">fajeddig@hotmail.fr</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="ftco-footer-widget mb-5">
+                            <h2 class="ftco-heading-2">Derniers articles</h2>
+                            <div class="block-21 mb-4 d-flex">
+                                <a class="blog-img mr-4" style="background-image: url({{ '/build/images/image_1.jpg' }});"></a>
+                                <div class="text">
+                                    <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+                                    <div class="meta">
+                                        <div><a href="#"><span class="icon-calendar"></span> June 27, 2019</a></div>
+                                        <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                                        <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="block-21 mb-5 d-flex">
+                                <a class="blog-img mr-4" style="background-image: url({{ '/build/images/image_2.jpg' }});"></a>
+                                <div class="text">
+                                    <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+                                    <div class="meta">
+                                        <div><a href="#"><span class="icon-calendar"></span> June 27, 2019</a></div>
+                                        <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                                        <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="ftco-footer-widget mb-5 ml-md-4">
+                            <h2 class="ftco-heading-2">Liens</h2>
+                            <ul class="list-unstyled">
+                                <li><a href="{{ url('homepage') }}"><span class="ion-ios-arrow-round-forward mr-2"></span>Accueil</a></li>
+                                <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
+                                <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>Services</a></li>
+                                <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>Projects</a></li>
+                                <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="ftco-footer-widget mb-5">
+                            <h2 class="ftco-heading-2">Restons en contact</h2>
+                            <form action="#" class="subscribe-form">
+                                <div class="form-group">
+                                    <input type="text" class="form-control mb-2 text-center" placeholder="Votre e-mail">
+                                    <input type="submit" value="Souscrire à la newsletter" class="form-control submit px-3">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="ftco-footer-widget mb-5">
+                            <h2 class="ftco-heading-2 mb-0">Suivez-nous</h2>
+                            <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+
+                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;2020 All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+
+        <!-- loader -->
+{#        <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>#}
+
+    {% endblock %}
+    </body>
+
+</html>

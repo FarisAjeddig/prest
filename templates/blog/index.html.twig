@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BlogController!{% endblock %}
+
+{% block body %}
+
+
+{#    <section class="hero-wrap hero-wrap-2" style="background-image: url({{ '../build/images/bg_1.jpg' }});">#}
+{#        <div class="overlay"></div>#}
+{#        <div class="container">#}
+{#            <div class="row no-gutters slider-text align-items-center justify-content-center">#}
+{#                <div class="col-md-9 ftco-animate text-center">#}
+{#                    <h1 class="mb-2 bread">Blog</h1>#}
+{#                    <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog <i class="ion-ios-arrow-forward"></i></span></p>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                {% for article in articles %}
+                <div class="col-md-6 col-lg-4 ftco-animate">
+                    <div class="blog-entry">
+                        <a href="{{ url('blog_show', {'id': article.id }) }}" class="block-20 d-flex align-items-end" style="background-image: url({{ '../uploads/pictures/'}}{{ article.picture }});">
+                            <div class="meta-date text-center p-2">
+                                <span class="day">{{ article.creationDate|date("d") }}</span>
+                                <span class="mos">{{ article.creationDate|date('M')}}</span>
+                                <span class="yr">{{ article.creationDate|date('Y')}}</span>
+                            </div>
+                        </a>
+                        <div class="text bg-white p-4">
+                            <h3 class="heading"><a href="{{ url('blog_show', {'id': article.id }) }}">{{ article.title }}</a></h3>
+                            <p>{{article.content |raw}}</p>
+                            <div class="d-flex align-items-center mt-4">
+                                <p class="mb-0"><a href="{{ url('blog_show', {'id': article.id }) }}" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+                                <p class="ml-auto mb-0">
+{#                                    <a href="{{ url('blog_show', {'id': article.id }) }}" class="mr-2">Admin</a>#}
+                                    <a href="{{ url('blog_show', {'id': article.id }) }}" class="meta-chat"><span class="icon-chat"></span> {{ article.comments |length }}</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+{#            <div class="row mt-5">#}
+{#                <div class="col text-center">#}
+{#                    <div class="block-27">#}
+{#                        <ul>#}
+{#                            <li><a href="#">&lt;</a></li>#}
+{#                            <li class="active"><span>1</span></li>#}
+{#                            <li><a href="#">2</a></li>#}
+{#                            <li><a href="#">3</a></li>#}
+{#                            <li><a href="#">4</a></li>#}
+{#                            <li><a href="#">5</a></li>#}
+{#                            <li><a href="#">&gt;</a></li>#}
+{#                        </ul>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+        </div>
+    </section>
+{% endblock %}

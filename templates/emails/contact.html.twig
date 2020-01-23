@@ -1,0 +1,7 @@
+<h3>Nouveau contact sur le site !</h3>
+
+<b>Nom : </b> {{ contact.name }} <br>
+<b>Email : </b> <a href="mailto:{{ contact.email }}">{{ contact.email }}</a><br>
+<b>Téléphone : </b> <a href="tel:{{ contact.phoneNumber }}">{{ contact.phoneNumber }}</a><br><br>
+<b>Sujet : </b> {{ contact.subject }} <br><br><br>
+{{ contact.message }}
