@@ -18,15 +18,60 @@ class DefaultController extends AbstractController
     /**
      * @Route("/", name="homepage")
      */
-    public function index()
+    public function index(Request $request, \Swift_Mailer $mailer)
     {
         $articles = $this->getDoctrine()->getRepository(Article::class)->findThreeLast();
         $customerReviews = $this->getDoctrine()->getRepository(CustomerReview::class)->findThreeLast();
 
+        $form = $this->createFormBuilder([])
+            ->add('robots', TextType::class)
+            ->add('name', TextType::class)
+            ->add('email', EmailType::class)
+            ->add('phoneNumber', TextType::class)
+            ->add('message', TextareaType::class)
+            ->add('Envoyer', SubmitType::class)
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+
+            $message = (new \Swift_Message('Message depuis la page d\'accueil'))
+                ->setFrom('consulting.awalee@gmail.com')
+                ->setTo('fajeddig@hotmail.fr')
+                ->setBody(
+                    $this->renderView(
+                        'emails/contact.html.twig',
+                        ['contact' => $form->getData()]
+                    ),
+                    'text/html'
+                );
+
+            $mailer->send($message);
+
+            $this->addFlash('success', "Message bien reçu, on vous répond rapidement!");
+
+
+            return $this->render('default/index.html.twig', [
+                'articles' => $articles,
+                'reviews' => $customerReviews
+            ]);
+
+        }
+
+
         return $this->render('default/index.html.twig', [
             'articles' => $articles,
-            'reviews' => $customerReviews
+            'reviews' => $customerReviews,
+            'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/tarifs", name="tarifs")
+     */
+    public function tarifsAction(Request $request){
+        return $this->render('default/tarifs.html.twig');
     }
 
     /**
@@ -37,7 +82,6 @@ class DefaultController extends AbstractController
             ->add('name', TextType::class, ['label' => 'Votre nom'])
             ->add('email', EmailType::class, ['label' => 'Votre email'])
             ->add('phoneNumber', IntegerType::class, ['label' => 'Votre téléphone'])
-            ->add('subject', TextType::class, ['label' => 'Sujet'])
             ->add('message', TextareaType::class, ['label' => 'Message'])
             ->add('robots', IntegerType::class, ['label' => "Combien font 2+3 ?"])
             ->add('Envoyer', SubmitType::class, ['attr' => ['class' => 'btn-block btn-primary']])
@@ -50,7 +94,7 @@ class DefaultController extends AbstractController
                 $this->addFlash('danger', "Et non, c'était 5");
             } else {
 
-                $message = (new \Swift_Message('Hello Email'))
+                $message = (new \Swift_Message('Message depuis la page contact'))
                     ->setFrom('consulting.awalee@gmail.com')
                     ->setTo('fajeddig@hotmail.fr')
                     ->setBody(
