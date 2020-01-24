@@ -124,6 +124,7 @@ class BlogController extends AbstractController
     {
         /** @var Article $article */
         $article = $this->getDoctrine()->getRepository(Article::class)->find($id);
+        $recentArticles = $this->getDoctrine()->getRepository(Article::class)->findThreeLast();
 
         $comment = new Comment();
 
@@ -156,7 +157,8 @@ class BlogController extends AbstractController
         return $this->render('blog/show.html.twig', [
             'article' => $article,
             'comments' => $article->getComments(),
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'recentArticles' => $recentArticles
         ]);
     }
 

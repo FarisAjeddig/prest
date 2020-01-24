@@ -22,6 +22,7 @@ class ArticleRepository extends ServiceEntityRepository
     public function findThreeLast($limit = 3){
         return $this->createQueryBuilder('b')
             ->orderBy('b.creation_date', 'DESC')
+            ->where('b.isPublished = true')
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
