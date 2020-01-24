@@ -1,6 +1,6 @@
 {% extends 'baseAdmin.html.twig' %}
 
-{% block title %}Blog admin!{% endblock %}
+{% block title %}{{ parent() }} | Gestion des articles{% endblock %}
 
 {% block body %}
     <br><h1 style="text-align: center">Gestion des articles du bloc</h1><br>
@@ -30,7 +30,8 @@
                         <td>{{ article.creationDate|date('d/m/Y') }}</td>
                         <td>{{ article.comments|length }}</td>
                         <td>{% if article.isPublished %} Publié {% else %} Brouillon {% endif %}</td>
-                        <td><a class="text-success" href="{{ url('blog_edit', {id: article.id}) }}">Modifier</a></td>
+                        <td><a class="text-success" href="{{ url('blog_edit', {id: article.id}) }}">Modifier</a>
+                            <a href="{{ url('blog_show', {id: article.id}) }}" class="text-dark">Voir</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

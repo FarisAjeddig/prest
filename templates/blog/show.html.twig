@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BlogController!{% endblock %}
+{% block title %} {{ article.title }} | {{ parent() }} {% endblock %}
 
 {% block body %}
 {#    <section class="hero-wrap hero-wrap-2" style="background-image: url({{ '/build/images/bg_1.jpg' }});">#}
