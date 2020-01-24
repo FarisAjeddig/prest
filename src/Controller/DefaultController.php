@@ -116,4 +116,13 @@ class DefaultController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    public function blogFooterAction(){
+        $articles = $this->getDoctrine()->getRepository(Article::class)->findThreeLast(2);
+
+        return $this->render('default/blogFooter.html.twig', [
+            'articles' => $articles
+        ]);
+    }
+
 }

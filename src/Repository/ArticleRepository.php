@@ -19,13 +19,14 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
-    public function findThreeLast(){
+    public function findThreeLast($limit = 3){
         return $this->createQueryBuilder('b')
             ->orderBy('b.creation_date', 'DESC')
-            ->setMaxResults(3)
+            ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
     }
+
 
     // /**
     //  * @return Article[] Returns an array of Article objects
