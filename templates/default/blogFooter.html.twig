@@ -1,13 +1,16 @@
-{% for article in articles %}
-<div class="block-21 mb-4 d-flex">
-    <a class="blog-img mr-4" style="background-image: url({{ '/uploads/pictures/'}}{{ article.picture }});" href="{{ url('blog_show', {'id': article.id }) }}"></a>
-    <div class="text">
-        <h3 class="heading"><a href="{{ url('blog_show', {'id': article.id }) }}">{{ article.title }}</a></h3>
-        <div class="meta">
-            <div><a href="{{ url('blog_show', {'id': article.id }) }}"><span class="icon-calendar"></span> {{ article.creationDate|date("M d,Y") }}</a></div>
-{#            <div><a href="{{ url('blog_show', {'id': article.id }) }}"><span class="icon-person"></span> Admin</a></div>#}
-            <div><a href="{{ url('blog_show', {'id': article.id }) }}"><span class="icon-chat"></span> {{ article.comments |length }}</a></div>
+{% if articles is not null %}
+    <h2 class="ftco-heading-2">Derniers articles</h2>
+    {% for article in articles %}
+    <div class="block-21 mb-4 d-flex">
+        <a class="blog-img mr-4" style="background-image: url({{ '/uploads/pictures/'}}{{ article.picture }});" href="{{ url('blog_show', {'id': article.id }) }}"></a>
+        <div class="text">
+            <h3 class="heading"><a href="{{ url('blog_show', {'id': article.id }) }}">{{ article.title }}</a></h3>
+            <div class="meta">
+                <div><a href="{{ url('blog_show', {'id': article.id }) }}"><span class="icon-calendar"></span> {{ article.creationDate|date("M d,Y") }}</a></div>
+    {#            <div><a href="{{ url('blog_show', {'id': article.id }) }}"><span class="icon-person"></span> Admin</a></div>#}
+                <div><a href="{{ url('blog_show', {'id': article.id }) }}"><span class="icon-chat"></span> {{ article.comments |length }}</a></div>
+            </div>
         </div>
     </div>
-</div>
-{% endfor %}
+    {% endfor %}
+{% endif %}

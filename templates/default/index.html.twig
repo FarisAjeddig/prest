@@ -46,7 +46,7 @@
 {#                    </div>#}
 {#                </div>#}
 
-                <div class="col-md-7 wrap-about pr-md-4 ftco-animate">
+                <div class="col-md-12 wrap-about pr-md-4 ftco-animate">
                     <h2 class="mb-4">Nos points forts </h2>
                     <p>Nous accompagnons des jeunes structures dans leur communication digitale.</p>
                     <div class="row mt-5">
@@ -172,42 +172,42 @@
             <div class="row no-gutters">
 
                 <div class="col-md-4 col-lg-3">
-                    <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ 'build/images/logo_sam.png' }});">
+                    <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ 'build/images/boucheriesam.jpg' }});">
                         <div class="overlay"></div>
                         <a href="http://boucherie-levallois-sam.fr/" target="_blank" class="btn-site d-flex align-items-center justify-content-center"><span class="icon-subdirectory_arrow_right"></span></a>
                         <div class="text text-center p-4">
-                            <h3><a href="#">Boucherie SAM</a></h3>
+                            <h3><a href="http://boucherie-levallois-sam.fr/" target="_blank">Boucherie SAM</a></h3>
                             <span>Site vitrine</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-3">
-                    <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ 'build/images/project-1.jpg' }});">
+                    <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ 'build/images/commenever.png' }});">
                         <div class="overlay"></div>
                         <a href="http://commeneverparty.com/" target="_blank" class="btn-site d-flex align-items-center justify-content-center"><span class="icon-subdirectory_arrow_right"></span></a>
                         <div class="text text-center p-4">
-                            <h3><a href="#">Comme Never</a></h3>
+                            <h3><a href="http://commeneverparty.com/" target="_blank">Comme Never</a></h3>
                             <span>Site vitrine</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-4 col-lg-3">
-                    <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ 'build/images/logo_mouv_access.png' }});">
+                    <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ 'build/images/mouvaccess.jpg' }});">
                         <div class="overlay"></div>
                         <a href="http://mouvaccess.com/" target="_blank" class="btn-site d-flex align-items-center justify-content-center"><span class="icon-subdirectory_arrow_right"></span></a>
                         <div class="text text-center p-4">
-                            <h3><a href="#">MouvAccess</a></h3>
+                            <h3><a href="http://mouvaccess.com/" target="_blank">MouvAccess</a></h3>
                             <span>Site de e-commerce</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-3">
-                    <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ 'build/images/project-4.jpg' }});">
+                    <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ 'build/images/logo_buysmartparis.webp' }});">
                         <div class="overlay"></div>
                         <a href="http://buysmartparis.com/" target="_blank" class="btn-site d-flex align-items-center justify-content-center"><span class="icon-subdirectory_arrow_right"></span></a>
                         <div class="text text-center p-4">
-                            <h3><a href="#">Buy Smart Paris</a></h3>
+                            <h3><a href="http://buysmartparis.com/" target="_blank">Buy Smart Paris</a></h3>
                             <span>Site de e-commerce</span>
                         </div>
                     </div>
@@ -217,17 +217,17 @@
                         <div class="overlay"></div>
                         <a href="https://www.aloedebea.com" target="_blank" class="btn-site d-flex align-items-center justify-content-center"><span class="icon-subdirectory_arrow_right"></span></a>
                         <div class="text text-center p-4">
-                            <h3><a href="#">Aloe de Bea</a></h3>
+                            <h3><a href="https://www.aloedebea.com" target="_blank">Aloe de Bea</a></h3>
                             <span>Site de e-commerce</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-3">
-                    <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image:url({{ 'build/images/logo_magic_bee.png' }});">
+                    <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image:url({{ 'build/images/magic_bee.jpeg' }});">
                         <div class="overlay"></div>
                         <a href="https://magic-bee.fr/" target="_blank" class="btn-site d-flex align-items-center justify-content-center"><span class="icon-subdirectory_arrow_right"></span></a>
                         <div class="text text-center p-4">
-                            <h3><a href="#">Magic Bee</a></h3>
+                            <h3><a href="https://magic-bee.fr/" target="_blank">Magic Bee</a></h3>
                             <span>Site de e-commerce</span>
                         </div>
                     </div>
@@ -286,6 +286,7 @@
     </section>
     {% endif %}
 
+    {% if articles is not null %}
     <section class="ftco-section bg-light">
         <div class="container">
             <div class="row justify-content-center mb-5 pb-2">
@@ -322,6 +323,7 @@
             </div>
         </div>
     </section>
+    {% endif %}
 
     <section class="ftco-section testimony-section">
         <div class="container">
