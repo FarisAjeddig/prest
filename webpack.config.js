@@ -59,11 +59,11 @@ Encore
     ]))
 
     .copyFiles([
-        {from: './public/bundles/fosckeditor/', to: 'build/ckeditor/[path][name].[ext]', pattern: /\.(js|css)$/, includeSubdirectories: false},
-        {from: './public/bundles/fosckeditor/adapters', to: 'build/ckeditor/adapters/[path][name].[ext]'},
-        {from: './public/bundles/fosckeditor/lang', to: 'build/ckeditor/lang/[path][name].[ext]'},
-        {from: './public/bundles/fosckeditor/plugins', to: 'build/ckeditor/plugins/[path][name].[ext]'},
-        {from: './public/bundles/fosckeditor/skins', to: 'build/ckeditor/skins/[path][name].[ext]'}
+        {from: './public/bundles/fosckeditor/', to: 'ckeditor/[path][name].[ext]', pattern: /\.(js|css)$/, includeSubdirectories: false},
+        {from: './public/bundles/fosckeditor/adapters', to: 'ckeditor/adapters/[path][name].[ext]'},
+        {from: './public/bundles/fosckeditor/lang', to: 'ckeditor/lang/[path][name].[ext]'},
+        {from: './public/bundles/fosckeditor/plugins', to: 'ckeditor/plugins/[path][name].[ext]'},
+        {from: './public/bundles/fosckeditor/skins', to: 'ckeditor/skins/[path][name].[ext]'}
     ])
 
     // .autoProvidejQuery()
