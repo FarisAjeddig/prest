@@ -1,3 +1,7 @@
 body {
     background-color: lightgray;
 }
+
+html {
+    scroll-behavior: smooth;
+}
