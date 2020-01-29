@@ -39,6 +39,7 @@ class DefaultController extends AbstractController
             $message = (new \Swift_Message('Message depuis la page d\'accueil'))
                 ->setFrom('consulting.awalee@gmail.com')
                 ->setTo('fajeddig@hotmail.fr')
+                ->addTo('warenpaisley@gmail.com')
                 ->setBody(
                     $this->renderView(
                         'emails/contact.html.twig',
@@ -97,6 +98,7 @@ class DefaultController extends AbstractController
                 $message = (new \Swift_Message('Message depuis la page contact'))
                     ->setFrom('consulting.awalee@gmail.com')
                     ->setTo('fajeddig@hotmail.fr')
+                    ->addTo('warenpaisley@gmail.com')
                     ->setBody(
                         $this->renderView(
                             'emails/contact.html.twig',
