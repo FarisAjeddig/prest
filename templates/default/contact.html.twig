@@ -1,18 +1,20 @@
 {% extends 'base.html.twig' %}
-
+{% block meta %}
+    <meta name="description" content="Application web, site internet, application mobile. Digibinks est une agence d’accompagnement digital des entrepreneur. Elle réalise des applications web et applications mobiles en accompagnant les entrepreneurs du début à la fin.">
+{% endblock %}
 {% block title %}{{ parent() }} | Nous contacter{% endblock %}
 {% block body %}
 
     <section class="hero-wrap hero-wrap-2" style="background-image: url({{ 'build/images/bg_1.jpg' }});">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-            <div class="col-md-9 ftco-animate text-center">
-                <h1 class="mb-2 bread">Nous contacter</h1>
-{#                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Contact <i class="ion-ios-arrow-forward"></i></span></p>#}
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <h1 class="mb-2 bread">Nous contacter</h1>
+    {#                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Contact <i class="ion-ios-arrow-forward"></i></span></p>#}
+                </div>
             </div>
         </div>
-    </div>
     </section>
 
     <section class="ftco-section contact-section">
