@@ -1,0 +1,37 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Administration | Réalisations | {{ parent() }}{% endblock %}
+{% block body %}
+    <br><h1 style="text-align: center">Gestion des réalisations</h1><br>
+    <div style="text-align: center">
+        <a  href="{{ url('admin_realisations_add') }}" class="btn btn-primary">Ajouter une nouvelle réalisation</a>
+    </div><br><br>
+    <div class="container-fluid row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Client</th>
+                    <th scope="col">Réalisation</th>
+                    <th scope="col">URL</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for realisation in realisations %}
+                    <tr>
+                        <th scope="row">{{realisation.id}}</th>
+                        <td>{{ realisation.customerName }}</td>
+                        <td>{{ realisation.typeRealisation }}</td>
+                        <td><a href="{{ realisation.url }}">{{ realisation.url }}</a></td>
+{#                        <td><a class="text-success" href="{{ url('admin_customer_reviews_edit', {id: realisation.id}) }}">Modifier</a></td>#}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+{% endblock %}

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\CustomerReview;
+use App\Entity\Realisation;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -22,6 +23,7 @@ class DefaultController extends AbstractController
     {
         $articles = $this->getDoctrine()->getRepository(Article::class)->findThreeLast();
         $customerReviews = $this->getDoctrine()->getRepository(CustomerReview::class)->findThreeLast();
+        $realisations = $this->getDoctrine()->getRepository(Realisation::class)->findAll();
 
         $form = $this->createFormBuilder([])
             ->add('robots', TextType::class)
@@ -64,15 +66,27 @@ class DefaultController extends AbstractController
         return $this->render('default/index.html.twig', [
             'articles' => $articles,
             'reviews' => $customerReviews,
+            'realisations' => $realisations,
             'form' => $form->createView()
         ]);
     }
 
+//    /**
+//     * @Route("/tarifs", name="tarifs")
+//     */
+//    public function tarifsAction(Request $request){
+//        return $this->render('default/tarifs.html.twig');
+//    }
+
     /**
-     * @Route("/tarifs", name="tarifs")
+     * @Route("/realisations", name="realisations")
      */
-    public function tarifsAction(Request $request){
-        return $this->render('default/tarifs.html.twig');
+    public function realisationsAction(Request $request){
+        $realisation = $this->getDoctrine()->getRepository(Realisation::class)->findAll();
+
+        return $this->render('default/realisations.html.twig', [
+            'realisations' => array_reverse($realisation)
+        ]);
     }
 
     /**
