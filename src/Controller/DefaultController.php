@@ -7,12 +7,14 @@ use App\Entity\CustomerReview;
 use App\Entity\Realisation;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class DefaultController extends AbstractController
 {
@@ -138,6 +140,49 @@ class DefaultController extends AbstractController
 
         return $this->render('default/blogFooter.html.twig', [
             'articles' => $articles
+        ]);
+    }
+
+    /**
+     * @Route("/payment/{amount}", name="payment")
+     */
+    public function paymentAction(Request $request, $amount){
+        $form = $this->get('form.factory')
+            ->createNamedBuilder('payment-form')
+            ->add('token', HiddenType::class, [
+                'constraints' => [new NotBlank()],
+            ])
+            ->add('submit', SubmitType::class)
+            ->getForm();
+
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                // TODO: charge the card
+
+                \Stripe\Stripe::setApiKey($_ENV['stripe_secret_key']);
+
+                \Stripe\Charge::create([
+                    "amount" => $amount * 100,
+                    "currency" => "eur",
+                    "source" => $request->request->get('payment-form')['token'],
+                    "receipt_email" => 'fajeddig@hotmail.fr',
+                    "description" => 'Facture Boucherie SAM',
+                ]/*, [
+                "idempotency_key" => "Qx9ynl4xdel41yIc",
+            ]*/);
+
+                $this->addFlash('success', "Paiement bien reçu, merci !");
+
+            }
+        }
+
+
+        return $this->render('default/payment.html.twig', [
+            'amount' => $amount,
+            'form' => $form->createView(),
+            'stripe_public_key' => $_ENV['stripe_public_key']
         ]);
     }
 
