@@ -277,6 +277,7 @@
                             <h2 class="mb-4">Demander une estimation</h2>
                             <p>Laissez nous vos coordonnées et parlez nous de votre business / projet. Nous vous recontacterons très rapidement pour en discuter.</p>
                         </div>
+                        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
                         {{ form_start(form) }}
                         <div class="appointment-form ftco-animate">
                             <div class="d-md-flex">
@@ -296,7 +297,6 @@
                                     {{ form_widget(form.phoneNumber, {'attr' : {'class': 'form-control', 'placeholder' : 'Téléphone'}}) }}
                                 </div>
                             </div>
-
                             <div class="d-md-flex">
                                 <div class="form-group">
                                     {{ form_widget(form.message, {'attr' : {'class': 'form-control', 'placeholder' : 'Votre projet'}}) }}
@@ -305,6 +305,7 @@
                                     {{ form_widget(form.Envoyer, {'attr' : {'class': 'btn btn-white py-3 px-4', 'placeholder' : 'Envoyer'}}) }}
                                 </div>
                             </div>
+                            <div class="g-recaptcha" data-sitekey="6LeeP6kZAAAAADpKT0IdMqmFBKc-avvvMGvhj3yZ"></div>
                         </div>
                         {{ form_rest(form) }}
                         {{ form_end(form) }}
